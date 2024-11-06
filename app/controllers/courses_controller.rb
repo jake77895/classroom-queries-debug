@@ -7,7 +7,11 @@ class CoursesController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
-    @course = Course.where({:id => the_id }).at(0)
+
+    matching_records = Course.where({:id => the_id})
+
+    @the_course = matching_records.at(0)
+
 
     render({ :template => "courses/show" })
   end
